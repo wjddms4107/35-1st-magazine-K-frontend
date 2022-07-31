@@ -53,20 +53,20 @@
  ### 3. 메인 페이지
  #### Carousel (이미지 슬라이드) 기능 구현
  <img width="1419" alt="스크린샷 2022-07-31 오후 1 58 48" src="https://user-images.githubusercontent.com/78889402/182010887-89f336a8-353a-44ab-a32e-2b40f0a30026.png">
- - setinterval 함수 사용하여 3초 마다 슬라이드 이미지가 자동 변환되도록 구현했고 useState로 숫자 3이 넘어가면 1부터 다시 시작하도록 설정했다.
- - 슬라이드 이미지의 오른쪽을 누르면 앞의 이미지로, 왼쪽을 누르면 뒤의 이미지로 변환하는데 이는 button태그로 오른쪽 반, 왼쪽 반 각각 넓이를 50%씩 주고 opacity: 0으로 안보이게 처리하였다.
- - 또한 const isFirstSlide = slide === 1; const isLastSlide = slide === 3;로 변수를 만들어 1과 3에서는 버튼을 눌러도 안넘어 가도록 disabled에 할당해주었다.
- - 슬라이드가 변환될 때 각 이미지에 맞는 데이터가 출력되도록 해야한다. 이는 데이터에 filter메서드를 걸어 data.id와 slide의 숫자가 같을 때만 리턴하도록 해서 구현할 수 았었다.
+ - setinterval 함수 사용하여 3초 마다 슬라이드 이미지가 자동 변환되도록 구현했고 useState로 숫자 3이 넘어가면 1부터 다시 시작하도록 설정했다.<br />
+ - 슬라이드 이미지의 오른쪽을 누르면 앞의 이미지로, 왼쪽을 누르면 뒤의 이미지로 변환하는데 이는 button태그로 오른쪽 반, 왼쪽 반 각각 넓이를 50%씩 주고 opacity: 0으로 안보이게 처리하였다.<br />
+ - 또한 const isFirstSlide = slide === 1; const isLastSlide = slide === 3;로 변수를 만들어 1과 3에서는 버튼을 눌러도 안넘어 가도록 disabled에 할당해주었다.<br />
+ - 슬라이드가 변환될 때 각 이미지에 맞는 데이터가 출력되도록 해야한다. 이는 데이터에 filter메서드를 걸어 data.id와 slide의 숫자가 같을 때만 리턴하도록 해서 구현할 수 았었다.<br />
   
 #### MainSectionMenu 페이지 이동 기능 구현
 <img width="1419" alt="스크린샷 2022-07-31 오후 1 58 34" src="https://user-images.githubusercontent.com/78889402/182010895-ae26e3d4-effe-4eae-8c30-1e4ca0d83b92.png">
-- MainSectionMenu에 이미지를 누르면 navigate함수가 실행되어 해당 제품의 issue_number로 이동하도록 설정했다. -> navigate(`Products/${issue_number}`);
-- MainSectionMenu 하단의 Shop버튼을 누르면 상품리스트 페이지로 이동하는데 이도 navigate함수를 이용하였다. -> navigate(`/ProductList?category=1`);
+- MainSectionMenu에 이미지를 누르면 navigate함수가 실행되어 해당 제품의 issue_number로 이동하도록 설정했다. -> navigate(`Products/${issue_number}`);<br />
+- MainSectionMenu 하단의 Shop버튼을 누르면 상품리스트 페이지로 이동하는데 이도 navigate함수를 이용하였다. -> navigate(`/ProductList?category=1`);<br />
 
 #### 동영상 자동재생 기능 구현
 <img width="1435" alt="스크린샷 2022-07-31 오후 1 56 53" src="https://user-images.githubusercontent.com/78889402/182010899-89946ba4-4bee-459d-8317-333beca2cac5.png">
-- useRef훅을 사용하여 스크롤이 동영상에 도달했을 때 자동재생되도록 구현하였고 video속성으로 playsInline, loop, muted을 할당했다.
-- 또한 동영상이 화면에 가득 차도록 구현하여야 했는데 이는 SCSS로 부모요소에 width: 100%;, object-fit: cover;을 주고 자식요소에 width: 100%;, height: 100%;를 줘서 구현할 수 있었다.
+- useRef훅을 사용하여 스크롤이 동영상에 도달했을 때 자동재생되도록 구현하였고 video속성으로 playsInline, loop, muted을 할당했다.<br />
+- 또한 동영상이 화면에 가득 차도록 구현하여야 했는데 이는 SCSS로 부모요소에 width: 100%;, object-fit: cover;을 주고 자식요소에 width: 100%;, height: 100%;를 줘서 구현할 수 있었다.<br />
 
  ### 4. 제품 리스트 페이지
  #### 카테고리 메뉴 탭 포커스온 기능 구현
