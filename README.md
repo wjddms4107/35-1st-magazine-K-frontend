@@ -69,24 +69,7 @@
 - 또한 동영상이 화면에 가득 차도록 구현하여야 했는데 이는 SCSS로 부모요소에 width: 100%;, object-fit: cover;을 주고 자식요소에 width: 100%;, height: 100%;를 줘서 구현할 수 있었다.<br />
 
  ### 4. 제품 리스트 페이지
- #### 카테고리 메뉴 탭 포커스온 기능 구현
-  - 각 카테고리 메뉴 탭을 컴포넌트화 시키고 부모 컴포넌트에서 useState값 선언, 이 state를 props로 각 컴포넌트에 넘겨준다.
-  - state값(true or false)을 활용하여 메뉴 탭이 포커스 on or off되도록 css를 설정.
-  - 한 카테고리 메뉴 탭이 클릭되면 true, 나머지 메뉴 탭들은 false가 되도록 로직 구현. 
-  
- #### query parameter를 이용한 카테고리별 데이터 호출
-  - 카테고리 메뉴탭을 클릭하면 url에 ?category={number}의 형식으로 나타나게끔 로직을 구현하고
-  - searchParams를 이용해 category 값을 받아 API의 endpoint로 요청한다.
-  - 백엔드 API는 해당하는 데이터들을 전송해준다.
-  
- #### pagenation 및 sort 기능 구현
-  - page당 상품 갯수(limit) 버튼을 추가해 사용자가 값을 입력하면, 이 값을 API endpoint로 전달한다.
-  - 이때 API로부터 전체 상품 갯수(total)를 전달받아, total과 limit을 사용해 전체 페이지 수를 구한다.
-  - 전체 페이지수를 기준으로 페이지네이션 로직을 구현하고, 페이지 수를 클릭할 때마다 이값도 API에 전달해준다.
-  - 백엔드 API는 limit, page, category 값을 받아 해당하는 데이터리스트를 전송한다.
-  - sort 버튼을 추가해 사용자가 값을 입력하면 백엔드와 약속한 string을 API에 보내준다.
-  - 백엔드 API에서 해당하는 정렬 순서로 데이터리스트를 보내준다.
-  
+ 
  ### 5. 제품 상세 페이지
  #### 상세페이지
  <img width="1439" alt="스크린샷 2022-07-31 오후 2 25 29" src="https://user-images.githubusercontent.com/78889402/182011621-a3ab9784-6d85-4bc1-9cc7-0c1e99b3e653.png">
