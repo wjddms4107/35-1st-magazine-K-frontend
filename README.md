@@ -1,4 +1,6 @@
 # 35기 1차 프로젝트 "Magazine K"
+> [Magazine K 영상](https://www.youtube.com/watch?v=f-sBWaB70Ck)
+ <img width="1419" alt="스크린샷 2022-07-31 오후 1 58 48" src="https://user-images.githubusercontent.com/78889402/182010887-89f336a8-353a-44ab-a32e-2b40f0a30026.png">
 
 ## 프로젝트 소개
  Magazine B 웹 사이트를 클론코딩하는 프로젝트 <br />
@@ -8,14 +10,8 @@
  브랜드의 숨은 얘기는 물론 감성과 문화까지 담고있어 브랜드에 관심 있는 사람이라면 누구나 쉽게 웹 사이트에 들어와 <br />
  월간지를 구매할 수 있는 사이트입니다.<br />
  <br />
-  2주라는 제한된 시간 안에 커머스 웹사이트를 구현해야합니다.<br />
-  Magazine B 웹사이트는 간단한 웹사이트처럼 보이지만 <br />
-  회원가입, 로그인, 장바구니, 결제, 배송, 찜하기, 리뷰 등 커머스 웹사이트라면 꼭 구현해야하는 기능을 모두 갖추고 있고 <br />
-  디자인도 매우 따뜻하고 감각적인 웹사이트입니다.
-  
- -------
- 
- ## 작업기간,  구현기능, 사용기술 소개
+
+## 작업기간,  구현기능, 사용기술 소개
  - 작업기간 <br />
  7월 18일 ~ 7월 29일 => 약 2주간의 기간동안 작업하였습니다.
  
@@ -25,13 +21,13 @@
  커머스 사이트의 기본적인 FLOW를 갖추고 있습니다.
  
  - 사용기술<br />
- Front-end: HTML, SCSS, Javascript, React, React-Router<br />
+ Front-end: HTML, SCSS, Javascript, React <br />
  Back-end: Phython, Django, MySQL
  
 
  ------
  
- ## 팀원 소개
+## 팀원 소개
  - FRONT
  주원영, 노정은, 길현민
  
@@ -41,101 +37,197 @@
  
  ------
  
- ## FRONTEND 필수구현 기능
+## FRONTEND 필수구현 기능
  
- ### 1. 회원가입 페이지
- 
- ### 2. 로그인 페이지
- 
- ### 3. 메인 페이지
- #### Carousel (이미지 슬라이드) 기능 구현
- <img width="1419" alt="스크린샷 2022-07-31 오후 1 58 48" src="https://user-images.githubusercontent.com/78889402/182010887-89f336a8-353a-44ab-a32e-2b40f0a30026.png">
- - setinterval 함수 사용하여 3초 마다 슬라이드 이미지가 자동 변환되도록 구현했고 useState로 숫자 3이 넘어가면 1부터 다시 시작하도록 설정했다.<br />
- - 슬라이드 이미지의 오른쪽을 누르면 앞의 이미지로, 왼쪽을 누르면 뒤의 이미지로 변환하는데 이는 button태그로 오른쪽 반, 왼쪽 반 각각 넓이를 50%씩 주고 opacity: 0으로 안보이게 처리하였다.<br />
- - 또한 const isFirstSlide = slide === 1; const isLastSlide = slide === 3;로 변수를 만들어 1과 3에서는 버튼을 눌러도 안넘어 가도록 disabled에 할당해주었다.<br />
- - 슬라이드가 변환될 때 각 이미지에 맞는 데이터가 출력되도록 해야한다. 이는 데이터에 filter메서드를 걸어 data.id와 slide의 숫자가 같을 때만 리턴하도록 해서 구현할 수 았었다.<br />
-  
-#### MainSectionMenu 페이지 이동 기능 구현
-<img width="1419" alt="스크린샷 2022-07-31 오후 1 58 34" src="https://user-images.githubusercontent.com/78889402/182010895-ae26e3d4-effe-4eae-8c30-1e4ca0d83b92.png">
-- MainSectionMenu에 이미지를 누르면 navigate함수가 실행되어 해당 제품의 issue_number로 이동하도록 설정했다. -> navigate(`Products/${issue_number}`);<br />
-- MainSectionMenu 하단의 Shop버튼을 누르면 상품리스트 페이지로 이동하는데 이도 navigate함수를 이용하였다. -> navigate(`/ProductList?category=1`);<br />
-
-#### 동영상 자동재생 기능 구현
-<img width="1435" alt="스크린샷 2022-07-31 오후 1 56 53" src="https://user-images.githubusercontent.com/78889402/182010899-89946ba4-4bee-459d-8317-333beca2cac5.png">
-- useRef훅을 사용하여 스크롤이 동영상에 도달했을 때 자동재생되도록 구현하였고 video속성으로 playsInline, loop, muted을 할당했다.<br />
-- 또한 동영상이 화면에 가득 차도록 구현하여야 했는데 이는 SCSS로 부모요소에 width: 100%;, object-fit: cover;을 주고 자식요소에 width: 100%;, height: 100%;를 줘서 구현할 수 있었다.<br />
-
- ### 4. 제품 리스트 페이지
- 
- ### 5. 제품 상세 페이지
- #### 상세페이지
- <img width="1439" alt="스크린샷 2022-07-31 오후 2 25 29" src="https://user-images.githubusercontent.com/78889402/182011621-a3ab9784-6d85-4bc1-9cc7-0c1e99b3e653.png">
-
- - -, +를 누를때 마다 상품의 개수가 변하며 가격도 함께 변동하는데 이는 useState로 구현했다.
- - 상품 리스트 페이지에서 상품을 눌렀을 때 해당 상품의 상세 페이지로 이동할 수 있게 하기위해 path parameter를 이용하여 backend와 api 통신을 했다.
- - ADD TO CART 누르면 장바구니 모당창이 켜지며 -와 +한 만큼의 상품이 추가된다. 이것 또한 path parameter를 이용하여 backend와 api 통신을 했으며 대신 POST로, body에 { quantity: orderQuantity }를 담아 전송했다. 
- - back에게 받은 데이터가 'SUCCESS' 일 때만 장바구니 모달창이 켜지며 'SUCCESS' 가 아니라면 alert를 띄워준 후 navigate로 로그인 창으로 이동하게 구현했다.
- #### 리뷰 기능
- <img width="894" alt="스크린샷 2022-07-31 오후 2 27 23" src="https://user-images.githubusercontent.com/78889402/182011623-3d351d4d-04b9-47b5-b865-5f6c9d81ec53.png">
-
- - 호버, 클릭하면 별점이 채워지며 클릭을 해야지만 state가 변경한다. 이는 [...Array(5)].map으로 빈 별을 채워줬고 클릭하면 rating state가 바뀌어 index와 비교해서 작거나 같을 시 className으로 on을 줘서 별이 채워지도록 했다.
- - '리뷰등록' 버튼을 누르면 선택한 별점, 입력한 댓글, 아이디명이 등록된다. 이는 POST로 사용자가 해당 제품을 구매했는지 토큰으로 인가 후 rating, commentText를 담아 back에게 전송해주었다. 그리고 두번째 then에서 댓글이 추가되도록 구현했다.
-- back에서 주는 rating은 '1.0', '2.0'과 같은 문자, 내가 별점을 누를 때는 rating이 1, 2와 같은 숫자인데 이는 Number(rating)으로 모조리 숫자로 바꿔줌으로 해결할 수 있었다.
- 
- ### 6. 네비게이션 바 
- 
- ### 7. 장바구니 메인 & 결제
- 
- ### 8. 푸터
-  - 간단하기 html, scss로만 구현했다.
-  - 푸터가 다른 페이지와 겹치지 않게 하기 위해 transform: translateY(-100%);를 적용했다.
-  <img width="1419" alt="스크린샷 2022-07-31 오후 1 59 01" src="https://user-images.githubusercontent.com/78889402/182010915-6a796b61-f6f1-40f1-9aa3-d06471386800.png">
-
-
+- 회원가입 페이지
+- 로그인 페이지
+- 메인 페이지 ➡️ 노정은
+- 제품 리스트 페이지 
+- 제품 상세 페이지 ➡️ 노정은
+- 네비게이션 바
+- 장바구니 모달 ➡️ 노정은
+- 장바구니 메인 & 결제 페이지
+- 푸터 ➡️ 노정은 
 
 -------
+
+## 각 페이지별 View
+> [유튜브 데모 영상](https://www.youtube.com/watch?v=f-sBWaB70Ck)
+
+<table>
+  <thead>
+    <tr>
+      <th>
+        메인페이지
+      </th>
+      <th>
+        메인페이지
+      </th>
+      <th>
+        메인페이지
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center">
+        <img width="789" alt="image" src="https://user-images.githubusercontent.com/78889402/190124386-da1019e1-a03f-48f3-9221-1824a03713b3.png">
+      </td>
+      <td align="center">
+       <img width="789" alt="image" src="https://user-images.githubusercontent.com/78889402/190124410-edc57de2-051f-4126-bbe4-7e52b07acb9d.png">
+      </td>
+      <td align="center">
+       <img width="789" alt="image" src="https://user-images.githubusercontent.com/78889402/190124387-2d1dcdf6-081e-422f-b21c-81204720220c.png">
+      </td>    
+    </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+    <tr>
+      <th>
+        회원가입 페이지
+      </th>
+      <th>
+        로그인 페이지
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center">
+        <img width="789" alt="image" src="https://user-images.githubusercontent.com/78889402/190124804-43200f9a-1e97-48f9-9942-660af5011b4c.png">
+      </td>
+      <td align="center">
+          <img width="789" alt="image" src="https://user-images.githubusercontent.com/78889402/190124830-845e2134-a8d1-48ca-81ae-43661dfb4cc9.png">
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+    <tr>
+      <th>
+        제품 리스트 페이지
+      </th>
+      <th>
+        제품 상세 페이지
+      </th>
+      <th>
+        제품 상세 리뷰 기능
+      </th
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center">
+        <img width="789" alt="image" src="https://user-images.githubusercontent.com/78889402/190124862-286c1def-fd34-41cd-9a77-d9431832c1a8.png">
+      </td>
+      <td align="center">
+       <img width="789" alt="제품상세" src="https://user-images.githubusercontent.com/78889402/190124886-b11ce346-4223-450f-91a1-21f820773755.png">
+      </td>
+     <td align="center">
+      <img width="789" alt="제품상세리뷰" src="https://user-images.githubusercontent.com/78889402/190124908-9c884cc4-9305-4168-bba2-8fde6b039f4a.png">
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+    <tr>
+      <th>
+        장바구니 모달
+      </th>
+      <th>
+        장바구니 메인, 결제 페이지
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+     <td align="center">
+        <img width="789" alt="image" src="https://user-images.githubusercontent.com/78889402/190126089-03205ddb-9f3f-4f78-963b-bebbd4d5d360.png">
+      </td>
+      <td align="center">
+        <img width="789" alt="image" src="https://user-images.githubusercontent.com/78889402/190125001-3fff2734-9f00-408a-b134-f4be9ea28e87.png">
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+    <tr>
+      <th>
+        네비게이션 바 검색기능
+      </th>
+      <th>
+        푸터
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+     <td align="center">
+        <img width="789" alt="image" src="https://user-images.githubusercontent.com/78889402/190125776-0e62894d-0cde-46f3-8f03-b2036283b656.png">
+      </td>
+      <td align="center">
+       <img width="789" alt="푸터" src="https://user-images.githubusercontent.com/78889402/190125639-2bd36ada-9e43-42c9-aa68-aa2c8ca02387.png">
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 ## 프로젝트 협업 도구
 ### 1. Trello
 - 기능 단위로 카드를 생성하여 프로젝트가 sprint 미팅대로 잘 이루어졌는지 파악하고 stand up 미팅 활용한 도구로 활용
-<img width="666" src="https://user-images.githubusercontent.com/97422072/181877342-8c063ea9-3554-477b-b2b8-31b9fd5ba3bc.png">
-
 ### 2. Slack
 - 팀원간의 실시간 소통 창구
-<img width="666" src="https://user-images.githubusercontent.com/97422072/181877235-1fb94559-52a4-403c-a3f9-4daf4c8e7b0c.png">
-
 ### 3. Notion
  - 회의정리 기록, 오늘의 공유/질문 사항, 현재 진행 사항, blocker 공유, 기능 단위 페이지 셍성 후 공유 및 기록
-<img width="1367" alt="스크린샷 2022-07-31 오후 1 10 50" src="https://user-images.githubusercontent.com/78889402/182009668-6eae4b48-6a83-4108-8bd5-4804c922e40b.png">
-<img width="1367" alt="스크린샷 2022-07-31 오후 1 11 13" src="https://user-images.githubusercontent.com/78889402/182009676-f1ad22d5-6cc0-4696-9f16-eeb9fb5e3d80.png">
-<img width="1367" alt="스크린샷 2022-07-31 오후 1 11 31" src="https://user-images.githubusercontent.com/78889402/182009685-15ed7167-ab01-40f6-9c9e-50b1d0dab04f.png">
-<img width="1367" alt="스크린샷 2022-07-31 오후 1 11 47" src="https://user-images.githubusercontent.com/78889402/182009689-a6b7a855-8c35-4576-a473-566983dad21a.png"> 
+
+<table>
+  <tbody>
+    <tr>
+      <td align="center">
+        <img width="789" alt="image" src="https://user-images.githubusercontent.com/97422072/181877342-8c063ea9-3554-477b-b2b8-31b9fd5ba3bc.png">      
+      </td>
+      <td align="center">
+        <img width="789" alt=image" src="https://user-images.githubusercontent.com/83544570/184545339-9336d126-243e-4daa-85b1-fb4044844dbd.jpg">      
+       </td>
+    </tr>
+      <tr>
+      <td align="center">
+        <img width="789" alt="image" src="https://user-images.githubusercontent.com/78889402/182009668-6eae4b48-6a83-4108-8bd5-4804c922e40b.png">      
+      </td>
+      <td align="center">
+        <img width="789" alt="image" src="https://user-images.githubusercontent.com/78889402/182009676-f1ad22d5-6cc0-4696-9f16-eeb9fb5e3d80.png">      
+      </td>
+      </tr>
+                                                                                                                                                 <tr>
+  <td align="center">
+        <img width="789" alt="image" src="https://user-images.githubusercontent.com/78889402/182009685-15ed7167-ab01-40f6-9c9e-50b1d0dab04f.png">      
+      </td>
+                                                                                                                                                <td align="center">
+        <img width="789" alt="image" src="https://user-images.githubusercontent.com/78889402/182009689-a6b7a855-8c35-4576-a473-566983dad21a.png">      
+      </td>
+                                                                                                                                                 </tr>
+    
+  </tbody>
+</table>
+
 -------
 
 ## 프로젝트 회고
-### 노정은
-- 아쉬웠던 점
+### ✈️ 회고록
+- [🐥 노정은님 회고록(1) - 기능 구현에 대한 회고](https://jeongeuni.tistory.com/47?category=1103401)  <br />
+- [🐥 노정은님 회고록(2) - 팀 프로젝트에 대한 회고](https://jeongeuni.tistory.com/48?category=1103401)  <br />
 
-    - 속상하지만 좌절하지는 말자. 받아들이고 성장하려고 공부하고 노력하는 개발자가 되자.<br />
-    -> 장바구니 모달을 구현하면서 어려움에 많이 부딪혔다. 총액 부분을 구현하는데 도무지 어떻게 코드를 짜야 할지 감이 오지 않았다. 시간이 있다면 내가 끝까지 해보겠지만 백엔드의 장바구니는 구현되어가는데 팀에게 피해를 줄 것 같아 잘하시는 팀원분에게 이 부분에서 너무 막히는데 시간 되시면 도와달라고 도움을 요청했다. 결국 그 팀원분께서 해결해 주셔서 구현할 수 있었다. 처음부터 끝까지 내가 해냈어야 했는데 하지 못한 것이 너무 속상했다. 이때 현타가 많이 온 것 같다. 왜 나는 해내지 못했을까 하면서 말이다. 하지만 나는 받아들이기로 했다. 팀원이 짠 코드를 보고 아 이렇게 하면 되는구나 하고 공부하고 내가 다음에 해내면 되는 것이다. 이후 리뷰 기능을 할 때 총액과 비슷하게 부모요소에서 자식요소로 prop를 전달하며 구현해야 했었는데 장바구니에서의 회고 덕분인지 멋지게 구현해낼 수 있었다. 앞으로도 좌절하지 않고 앞으로 나아가는 개발자가 되고 싶다.
-    
-    - 독립심이 부족했다.<br />
-    -> 코드를 짜면서 막히는 부분이 있으면 스스로 해결하려고 최선의 노력을 했어야 했는데 동기들, 멘토님들이 계시니까 나 스스로 해결할 수 있는 부분까지도 도움을 받았던 것 같다. 2차 때는 혼자 고민하는 시간을 정해두고 그 시간이 넘었는데도 도무지 해결책이 나오지 않는다면 그때 최후의 수단으로 도움을 받아야겠다. 
-    
-    - 내 자신에게 확신을 가지자.<br />
-     -> 이번 프로젝트를 하면서 기능을 구현하기 전부터 내가 이걸 어떻게 구현해내지? 하며 겁부터 먹는 내 자신을 보았다. 예를 들어 메인페이지의 Carousel를 구현할 때 걱정부터 앞서서 해보지도 않고 해당 기술 관련 동영상보고, 벨로그를 보며 시간을 허비했다. 하지만 앞서 본 동영상과 벨로그는 내가 구현해야하는 Carousel과는 다른 기술이었고 그래서 적용시킬 수 없었다. 어쩔 수 없이(?) 내 능력으로 코드를 짜기 시작했는데 생각보다 술술 코드가 짜졌고 앞서 걱정하고 겁부터 먹던 내 자신을 반성하게 되었다. 내 자신을 믿고 확신을 가져야 겠다고 생각했다.
-     
-    - 구글링의 중요성 - stackoverflow<br />
-    -> 사용자는 웹 사이트를 들어와서 메인페이지를 먼저 접한다. 즉 메인페이지가 이 웹사이트의 간판인 셈이다. 또한 발표할 때도 메인페이지를 먼저 보여줘야 한다. 그런데 우리가 초반에 정한 바로는 메인페이지에 Carousel만 구현하기로 했어서 메인페이지를 맡은 나는 Carousel만 구현했었다. 이는 매우 흥미를 떨어트리는 메인페이지라고 내 스스로도 그렇게 생각했다. 그래서 하루 만에 MainSectionMenu, MainSectionVideo를 추가했다. 원래는 구글링을 할 때 영어로 검색하는 것이 익숙치 않아 한글로 "이미지 슬라이드 하는 법", "동영상 자동재생 하기" 이렇게 검색했었는데 "how to~" 하여 검색하니 외국의 여러 예시가 많이 나와 뚝딱뚝딱 나만의 코드로 만들어 구현해 낼 수 있었다. stackoverflow이 얼마나 개발자에게 유용한 플랫폼인지 프로젝트가 끝나갈 막바지에 알아서 아쉽다. 2차 때는 더 활용을 잘 해보고 싶다. 
-    
-- 잘했던 점
+#
 
-    - 공유를 위한 노력<br />
-    -> 팀 notion 만들기<br /> 
-    우리팀은 원래 trello만을 이용하여 진행사항을 공유했다. trello는 한눈에 보기 쉽지만 서로가 지금 무슨 작업을 하는지 정확히 파악하고 다양한 정보를 공유하기에 부족했다. 하지만 처음 해보는 팀 프로젝트라 이 부분이 문제가 되고 있음을 인지하지 못했다. 중간발표를 통해 많은 팀들이 notion을 활용하여 적극적으로 소통하고, 정보 공유를 위해 힘쓰는 것을 알게되었다. 나는 왜 진작 notion을 활용할 생각을 못했을까? 하면서 적잖은 충격을 받았다. 그래서 바로 팀 notion을 만들어 팀원들을 초대하였고 notion 템플릿을 다운받아 적용하고 팀원들과 회의하여 우리는 기능단위의 페이지를 만들어 관리하자!라는 결론으로 기능단위의 페이지를 만들어 관리했다. 이후 우리는 전보다 훨씬 소통을 잘하는 팀이 될 수 있었고 결론적으로 만족스런 결과도 도출해 낼 수 있었다. 
-    
-    - 팀을 위한 노력<br />
-     -> 최종발표 ppt 제작하기<br /> 
-    최종발표를 위해 ppt를 제작해야했다. 대학교를 다니며 몇 번 만들어 본 경험은 있지만 잘 만드는 편은 아니었다. 팀에게 피해줄 수도 있으니 선뜻 만들겠다고 할 수 없었는데 모두가 나처럼 부담을 가지고 있는 것 같았다. 어쩌면 내가 만들어 본 경험이 제일 많을지도 모른다고 생각했고 그래서 내가 제작해 보겠다고 했다. 이 ppt를 통해 2주 동안의 노력과 결과를 전달해야하므로 책임감을 가지고 제작했다. ppt를 만들면서 다시한번 이 프로젝트에 대해 돌아볼 수 있었고 결과적으로도 우리팀이 전달하고자 하는 바를 모두 전달한 것 같아 뿌듯하다.<img width="1012" alt="스크린샷 2022-07-31 오후 12 44 37" src="https://user-images.githubusercontent.com/78889402/182008973-9bd414d1-2304-4550-8141-93bc406a1021.png"><img width="1012" alt="스크린샷 2022-07-31 오후 12 44 54" src="https://user-images.githubusercontent.com/78889402/182008981-cf526633-baaa-4731-aabb-e97188f69a26.png">
-    -> footer 만들기<br /> 
-    우리는 footer를 추가 구현 사항으로 미뤄 놓았다. 하지만 footer의 기능은 추가 구현일지라도 홈페이지에 footer가 있어야 함은 필수적인 요소다. 그래서 팀원들에게 footer가 있어야 함을 말했고 홈페이지의 전체적인 완성도를 높이기 위해 footer를 제작했다. html, css만 뚝딱뚝딱하면 되는 거라서 전혀 어렵지 않지만 팀과 완성도를 높이기 위해 이것을 캐치하고 추가한 것이 뿌듯하다.
+### Reference
+
+- 이 프로젝트는 Magazine B 참조하여 학습목적으로 만들었습니다.
+- 학습용으로 만들었기 때문에 이 코드를 활용하여 이득을 취하거나 무단 배포할 경우 법적으로 문제될 수 있습니다.
+- 이 프로젝트에서 사용하고 있는 사진 대부분은 위코드에서 구매한 것이므로 해당 프로젝트 외부인이 사용할 수 없습니다.
