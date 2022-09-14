@@ -24,8 +24,6 @@
  Front-end: HTML, SCSS, Javascript, React <br />
  Back-end: Phython, Django, MySQL
  
-
- ------
  
 ## 팀원 소개
  - FRONT
@@ -34,8 +32,6 @@
  - BACK
  김동규, 황유정
  
- 
- ------
  
 ## FRONTEND 필수구현 기능
  
@@ -49,7 +45,6 @@
 - 장바구니 메인 & 결제 페이지
 - 푸터 ➡️ 노정은 
 
--------
 
 ## 각 페이지별 View
 > [유튜브 데모 영상](https://www.youtube.com/watch?v=f-sBWaB70Ck)
@@ -217,7 +212,6 @@
   </tbody>
 </table>
 
--------
 
 ## 프로젝트 회고
 ### ✈️ 회고록
