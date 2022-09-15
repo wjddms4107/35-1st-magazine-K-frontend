@@ -36,16 +36,90 @@ Back-End : 김동규, 황유정
 - 푸터 ➡️ 노정은 
 
 ## 4. 문제 해결 경험
+#### 4-1. 라이브러리 없이 Carousel 구현하기
+- 메인페이지 최상단에 3초마다 이미지와 데이터가 자동 변환하고 이미지의 오른쪽, 왼쪽을 누르면 이미지와 데이터가가 변환하는 Carousel를 구현했습니다. 이 작업이 간단해보이지만 꽤 복잡했어서 인상 깊습니다.
+- setinterval 함수 사용하여 3초마다 슬라이드 이미지가 자동 변환되도록 구현했고 useState로 숫자 3이 넘어가면 1부터 다시 시작하도록 설정했습니다. 
+- 그리고 슬라이드 이미지의 오른쪽을 누르면 앞의 이미지로, 왼쪽을 누르면 뒤의 이미지로 변환하는데 이는 button태그로 오른쪽 반, 왼쪽 반 각각 넓이를 50%씩 주고 opacity: 0으로 안 보이게 처리하였습니다. 또한 const isFirstSlide = slide === 1; const isLastSlide = slide === 3;로 변수를 만들어 1과 3에서는 버튼을 눌러도 안 넘어가도록 disabled에 할당해주었습니다.
+- 하지만 이 기능을 구현하면서 가장 애를 먹었는 부분은 이미지에 맞는 데이터를 출력하는 부분이었습니다. 어떻게 그에 맞는 데이터를 입히느냐 고민 끝에 fatch 받아온 데이터에 filter메서드를 걸어 data.id와 slide의 State 숫자가 같을 때만 리턴하도록 해서 구현할 수 있었습니다.
+
+<details>
+<summary><b>구현한 코드</b></summary>
+<div markdown="1">
+
+ ~~~javascript
+ const [slide, setSlide] = useState(1);
+ const [mainSlideData, setMainSlideData] = useState([]);
+
+ useEffect(() => {
+   fetch('/data/mainSlideData.json')
+     .then(res => res.json())
+     .then(data => {
+       const sameNumData = data.filter(data => {
+         return data.id === slide;
+      });
+   setMainSlideData(() => sameNumData);
+ });
+ ~~~
+ 
+</div>
+</details>
+
+#### 4-2. 클라이언트가 서버로 요청 보내는 방법
+- 상품 디테일 페이지에서 제품의 수량을 선택하고 'add to cart'버튼을 누르면 서버로 총수량을 보내서 최종적으로 장바구니 모달에 담겨지는 기능을 구현하였습니다.
+- backend에게 get요청만 해오다가 처음으로 post요청으로 데이터를 body에 담고 서버로 보내는 로직을 구현해 보았습니다.
+- 1차 프로젝트에서 backend와 협업을 처음 해보았고 또한 데이터 요청에 감을 잡지 못하던 저에게 '항상 처음이 어렵지 하고보면 할만하다 그러니 쫄지말자!'라는 자신감을 불어 넣어준 코드이기에 인상 깊습니다.
+
+<details>
+<summary><b>구현한 코드</b></summary>
+<div markdown="1">
+
+ ~~~javascript
+ <button
+  onClick={() => {
+    const token = localStorage.getItem('login-token') || '';
+
+     if (token) {
+        fetch(`http://10.58.3.49:8000/orders/cart/${product_id}`, {
+           method: 'POST',
+           headers: {
+             AUTHORIZATION: token,
+           },
+           body: JSON.stringify({ quantity: orderQuantity }),
+        })
+           .then(res => res.json())
+           .then(res => {
+             if (res.result === 'SUCCESS') {
+               setModalState(true);
+             }
+            });
+        } else {
+           alert('로그인이 필요한 기능입니다.');
+           navigate('/Login');
+        }
+   }}
+ >
+   ₩{priceThousand * orderQuantity},000 ADD TO CART
+ </button>
+ 
+ ~~~
+ 
+</div>
+</details>
+
+#### 4-3. 리뷰 별점 기능 구현하기
+- 제품 상세 페이지 하단에 리뷰기능이 있습니다. 이는 원래의 Magazine B에는 없는 기능인데 구현하면 재미있을 것 같아 팀원들에게 제안하여 추가된 기능이고 함께 합을 맞춰볼 backend동기와 깊이 소통하면서 기획, 데이터 구조, 요청 방식 등 모든 부분에 정성이 들어가 있어서 인상 깊습니다.
+
 
 
 <details>
-<summary><b>기존 코드</b></summary>
+<summary><b>코드</b></summary>
 <div markdown="1">
  ~~~javascript
  
  ~~~
 </div>
 </details>
+
 
 ## 각 페이지별 View
 > [유튜브 데모 영상](https://www.youtube.com/watch?v=f-sBWaB70Ck)
