@@ -67,7 +67,7 @@ Back-End : 김동규, 황유정
 #### 4-2. 클라이언트가 서버로 요청 보내는 방법
 - 상품 디테일 페이지에서 제품의 수량을 선택하고 'add to cart'버튼을 누르면 서버로 총수량을 보내서 최종적으로 장바구니 모달에 담겨지는 기능을 구현하였습니다.
 - backend에게 get요청만 해오다가 처음으로 post요청으로 데이터를 body에 담고 서버로 보내는 로직을 구현해 보았습니다.
-- 1차 프로젝트에서 backend와 협업을 처음 해보았고 또한 데이터 요청에 감을 잡지 못하던 저에게 '항상 처음이 어렵지 하고보면 할만하다 그러니 쫄지말자!'라는 자신감을 불어 넣어준 코드이기에 인상 깊습니다.
+- 1차 프로젝트에서 backend와 협업을 처음 해보았고 또한 데이터 요청에 감을 잡지 못하던 저에게 '항상 처음이 어렵지 하고보면 할만하다 그러니 쫄지말자!'라는 자신감을 불어 넣어준 이기에 인상 깊습니다.
 
 <details>
 <summary><b>구현한 코드</b></summary>
@@ -107,21 +107,79 @@ Back-End : 김동규, 황유정
 </details>
 
 #### 4-3. 리뷰 별점 기능 구현하기
-- 제품 상세 페이지 하단에 리뷰기능이 있습니다. 이는 원래의 Magazine B에는 없는 기능인데 구현하면 재미있을 것 같아 팀원들에게 제안하여 추가된 기능이고 함께 합을 맞춰볼 backend동기와 깊이 소통하면서 기획, 데이터 구조, 요청 방식 등 모든 부분에 정성이 들어가 있어서 인상 깊습니다.
-
-
+- 제품 상세 페이지에 제가 제일 애정을 가지고 있는 리뷰기능이 있습니다. 이는 원래의 Magazine B에는 없는 기능인데 구현하면 재미있을 것 같아 팀원들에게 제안하여 추가되었고 함께 합을 맞춰볼 backend 동기와 깊이 소통하면서 기획, 데이터 구조, 요청 방식 등 모든 부분에 정성을 들여 탄생한 기능이기 때문입니다.
+- 그리고 '리뷰 등록' 버튼을 누르면 선택한 별점, 입력한 댓글, 아이디명이 등록되는데 기존에 배열로 된 한 줄 댓글만 구현해 보아서 처음에 엄청 헤맸습니다. 어떻게 데이터를 만져야 할지 감이 잡히지 않았기 때문입니다. 결국은 당연하게도 key와 value를 담은 객체 데이터로 구현할 수 있었는데 이 고민을 통해 수많은 생각을 하면서 코딩에 감을 불어 넣어 준 코드이기에 매우 인상 깊습니다.
+- 또한 별점 기능에서 별을 클릭하거나 호버했을 때 별이 채워지며 클릭을 해야지만 state가 변경하는데 이는 일단 [...Array(5)].map으로 빈 별을 채워줬고 클릭하면 rating state가 바뀌어 index와 비교해서 작거나 같을 시 className으로 on을 줘서 별이 채워지도록 하여 구현할 수 있었습니다.
+- 여기까지하고 backend에게 데이터를 전송하면 리뷰 기능이 구현될 줄 알았는데 별점이 제대로 표시되지 않는 문제가 발생했습니다. 분명히 데이터를 잘 보내주고 있는데 말입니다. 해결을 위해 차근차근 코드를 분석해보았고 그 결과 back에서 주는 rating은 '1.0', '2.0'과 같은 문자, 클라이언트가 별점을 누를 때는 rating이 1, 2와 같은 숫자여서 댓글에 별점이 표시되지 않던 것 입니다. 이는 Number(rating)로 숫자데이터로 바꿔줌으로 해결할 수 있었습니다. 
 
 <details>
-<summary><b>코드</b></summary>
+<summary><b>구현한 코드</b></summary>
 <div markdown="1">
- ~~~javascript
  
+ ~~~javascript
+ // '리뷰등록' 버튼을 눌렀을 때 리뷰 추가하기
+ const addReview = e => {
+    if (commentText.length < 6) {
+      alert('5글자 이상을 입력해주세요');
+      setCommentText('');
+    } else if (rating === 0) {
+      alert('별점을 선택해주세요.');
+    } else {
+      const textareaObj = {
+        content: commentText,
+        rating: rating,
+      };
+      fetch(`http://10.58.3.49:8000/products/${product_id}/reviews`, {
+        //사용할 http 메소드
+        method: 'POST',
+        //토큰
+        headers: {
+          Authorization: token,
+        },
+        //서버에 보낼 데이터 (별점, 리뷰)
+        body: JSON.stringify({
+          rating: rating,
+          content: commentText,
+        }),
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.MESSAGE === 'SUCCESS') {
+            const copyComment = [...comment, textareaObj];
+            setComment(copyComment);
+            setCommentText('');
+          } else {
+            alert('구매하셔야 리뷰등록 가능합니다!');
+            setCommentText('');
+          }
+      });
+    }
+  };
+ 
+ // 별점 채우기
+ {[...Array(5)].map((star, index) => {
+  index += 1;
+  return (
+    <button
+      type="button"
+      id={index}
+      key={index}
+      className={index <= (hover || rating) ? 'on' : 'off'}
+      onClick={() => setRating(index)}
+      onMouseEnter={() => setHover(index)}
+      onMouseLeave={() => setHover(rating)}
+    >
+      <span className="star">&#9733;</span>
+    </button>
+  );
+})}
  ~~~
+ 
 </div>
 </details>
 
 
-## 각 페이지별 View
+## 5. 각 페이지별 View
 > [유튜브 데모 영상](https://www.youtube.com/watch?v=f-sBWaB70Ck)
 
 <table>
@@ -249,7 +307,7 @@ Back-End : 김동규, 황유정
 
 
 
-## 프로젝트 협업 도구
+## 6. 프로젝트 협업 도구
 ### 1. Trello
 - 기능 단위로 카드를 생성하여 프로젝트가 sprint 미팅대로 잘 이루어졌는지 파악하고 stand up 미팅 활용한 도구로 활용
 ### 2. Slack
@@ -288,7 +346,7 @@ Back-End : 김동규, 황유정
 </table>
 
 
-## 프로젝트 회고
+## 7. 프로젝트 회고
 ### ✈️ 회고록
 - [🐥 노정은님 회고록(1) - 기능 구현에 대한 회고](https://jeongeuni.tistory.com/47?category=1103401)  <br />
 - [🐥 노정은님 회고록(2) - 팀 프로젝트에 대한 회고](https://jeongeuni.tistory.com/48?category=1103401)  <br />
