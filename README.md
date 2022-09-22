@@ -37,16 +37,16 @@ Back-End : 김동규, 황유정
 
 
 ## 4. 문제 해결 경험
-#### 4-1. 라이브러리 없이 Carousel 구현하기
-<img width="500" alt="메인" src="https://user-images.githubusercontent.com/78889402/190542391-14962d89-424a-483a-b94c-53d84a4ed1b2.png">
+#### 4-1. 라이브러리 없이 Carousel 구현하기 *[코드로 이동](https://github.com/wjddms4107/magazine-K-frontend/blob/4a51bd8b43237d08e9d0a6161f893ac76b2df30d/src/pages/Main/Main.js#L7)
+<img width="700" alt="메인" src="https://user-images.githubusercontent.com/78889402/190542391-14962d89-424a-483a-b94c-53d84a4ed1b2.png">
 
-- 메인 페이지 최상단에 3초마다 이미지와 데이터가 자동 변환하고 이미지의 오른쪽, 왼쪽을 누르면 이미지와 데이터가가 변환하는 Carousel를 구현했습니다. 이 작업이 간단해 보이지만 꽤 복잡했어서 인상 깊습니다..
+- 메인 페이지 최상단에 3초마다 이미지와 데이터가 자동 변환되고 이미지의 오른쪽, 왼쪽을 누르면 이미지와 데이터가가 변환하는 Carousel를 구현했습니다. 
 
 - setinterval 함수 사용하여 3초마다 슬라이드 이미지가 자동 변환되도록 구현했고 useState로 숫자 3이 넘어가면 1부터 다시 시작하도록 설정했습니다. 
 
 - 그리고 슬라이드 이미지의 오른쪽을 누르면 앞의 이미지로, 왼쪽을 누르면 뒤의 이미지로 변환하는데 이는 button태그로 오른쪽 반, 왼쪽 반 각각 넓이를 50%씩 주고 opacity: 0으로 안 보이게 처리하였습니다. 또한 `const isFirstSlide = slide === 1; const isLastSlide = slide === 3;`로 변수를 만들어 1과 3에서는 버튼을 눌러도 안 넘어가도록 disabled에 할당해 주었습니다.
   
-- 하지만 이 기능을 구현하면서 가장 애를 먹었는 부분은 이미지에 맞는 데이터를 출력하는 부분이었습니다. 어떻게 그에 맞는 데이터를 입히느냐 고민 끝에 fatch 받아온 데이터에 filter메서드를 걸어 data.id와 slide의 State 숫자가 같을 때만 리턴하도록 해서 구현할 수 있었습니다.
+- 하지만 이 기능을 구현하면서 가장 애를 먹은 부분은 이미지에 맞는 데이터를 출력하는 부분이었습니다. 어떻게 그에 맞는 데이터를 입히느냐 고민 끝에 fatch 받아온 데이터에 filter메서드를 걸어 data.id와 slide의 State 숫자가 같을 때만 리턴하도록 해서 구현할 수 있었습니다.
 
 <details>
 <summary><b>구현한 코드</b></summary>
@@ -70,8 +70,8 @@ Back-End : 김동규, 황유정
 </div>
 </details>
 
-#### 4-2. 클라이언트가 서버로 요청 보내는 방법
-<img width="500" alt="제품상세" src="https://user-images.githubusercontent.com/78889402/190542484-52794c4f-f4d8-4dc3-94e4-43312a852936.png">
+#### 4-2. 클라이언트가 서버로 요청 보내는 방법 *[코드로 이동](https://github.com/wjddms4107/magazine-K-frontend/blob/4a51bd8b43237d08e9d0a6161f893ac76b2df30d/src/pages/ProductDetail/Detail/Detail.js#L74)
+<img width="700" alt="제품상세" src="https://user-images.githubusercontent.com/78889402/190542484-52794c4f-f4d8-4dc3-94e4-43312a852936.png">
 
 - 상품 디테일 페이지에서 제품의 수량을 선택하고 'add to cart'버튼을 누르면 서버로 총수량을 보내서 최종적으로 장바구니 모달에 담기는 기능을 할 때, backend에게 get요청만 해오다가 처음으로 post요청으로 데이터를 body에 담고 서버로 보내는 로직을 구현해 보았습니다.
 
@@ -114,8 +114,8 @@ Back-End : 김동규, 황유정
 </div>
 </details>
 
-#### 4-3. 리뷰 별점 기능 구현하기
-<img width="500" alt="제품상세리뷰" src="https://user-images.githubusercontent.com/78889402/190542523-a16021f7-f9a7-4f06-a935-9b3ccb02b911.png">
+#### 4-3. 리뷰 별점 기능 구현하기 *[코드로 이동: 리뷰 추가](https://github.com/wjddms4107/magazine-K-frontend/blob/4a51bd8b43237d08e9d0a6161f893ac76b2df30d/src/pages/ProductDetail/Review.js#L34), [코드로 이동: 별점](https://github.com/wjddms4107/magazine-K-frontend/blob/4a51bd8b43237d08e9d0a6161f893ac76b2df30d/src/pages/ProductDetail/Review.js#L83)
+<img width="700" alt="제품상세리뷰" src="https://user-images.githubusercontent.com/78889402/190542523-a16021f7-f9a7-4f06-a935-9b3ccb02b911.png">
 
 - 제품 상세 페이지에 제가 제일 애정을 가지고 있는 리뷰기능이 있습니다. 이는 원래의 Magazine B에는 없는 기능인데 구현하면 재미있을 것 같아 팀원들에게 제안하여 추가되었고 함께 합을 맞춰볼 backend 동기와 깊이 소통하면서 기획, 데이터 구조, 요청 방식 등 모든 부분에 정성을 들여 탄생한 기능이기 때문입니다.
 
