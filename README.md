@@ -38,7 +38,7 @@ Back-End : 김동규, 황유정
 
 ## 4. 문제 해결 경험
 ### 4-1. 라이브러리 없이 Carousel 구현하기 *[코드로 이동](https://github.com/wjddms4107/magazine-K-frontend/blob/4a51bd8b43237d08e9d0a6161f893ac76b2df30d/src/pages/Main/Main.js#L7)
-<img width="700" alt="메인" src="https://user-images.githubusercontent.com/78889402/190542391-14962d89-424a-483a-b94c-53d84a4ed1b2.png">
+<img width="700" alt="메인" src="https://user-images.githubusercontent.com/78889402/192104195-8fe153f6-babc-40cc-984f-e9c9f60c3868.gif">
 
 - 메인 페이지 최상단에 3초마다 이미지와 데이터가 자동 변환되고 이미지의 오른쪽, 왼쪽을 누르면 이미지와 데이터가가 변환하는 Carousel를 구현했습니다. 
 
@@ -71,7 +71,7 @@ Back-End : 김동규, 황유정
 </details>
 
 ### 4-2. 클라이언트가 서버로 요청 보내는 방법 *[코드로 이동](https://github.com/wjddms4107/magazine-K-frontend/blob/4a51bd8b43237d08e9d0a6161f893ac76b2df30d/src/pages/ProductDetail/Detail/Detail.js#L74)
-<img width="700" alt="제품상세" src="https://user-images.githubusercontent.com/78889402/190542484-52794c4f-f4d8-4dc3-94e4-43312a852936.png">
+<img width="700" alt="제품상세" src="https://user-images.githubusercontent.com/78889402/192104400-7eacf257-a91f-481e-a606-1d8b55664102.gif">
 
 - 상품 디테일 페이지에서 제품의 수량을 선택하고 'add to cart'버튼을 누르면 서버로 총수량을 보내서 최종적으로 장바구니 모달에 담기는 기능을 할 때, backend에게 get요청만 해오다가 처음으로 post요청으로 데이터를 body에 담고 서버로 보내는 로직을 구현해 보았습니다.
 
@@ -115,9 +115,11 @@ Back-End : 김동규, 황유정
 </details>
 
 ### 4-3. 리뷰 별점 기능 구현하기 *[코드로 이동: 리뷰 추가](https://github.com/wjddms4107/magazine-K-frontend/blob/4a51bd8b43237d08e9d0a6161f893ac76b2df30d/src/pages/ProductDetail/Review.js#L34), [코드로 이동: 별점](https://github.com/wjddms4107/magazine-K-frontend/blob/4a51bd8b43237d08e9d0a6161f893ac76b2df30d/src/pages/ProductDetail/Review.js#L83)
-<img width="700" alt="제품상세리뷰" src="https://user-images.githubusercontent.com/78889402/190542523-a16021f7-f9a7-4f06-a935-9b3ccb02b911.png">
+<img width="700" alt="제품상세리뷰" src="https://user-images.githubusercontent.com/78889402/192104212-e11ef2c1-47fd-41de-b4bd-4a6f8d0cf115.gif">
 
 - 제품 상세 페이지에 제가 제일 애정을 가지고 있는 리뷰기능이 있습니다. 이는 원래의 Magazine B에는 없는 기능인데 구현하면 재미있을 것 같아 팀원들에게 제안하여 추가되었고 함께 합을 맞춰볼 backend 동기와 깊이 소통하면서 기획, 데이터 구조, 요청 방식 등 모든 부분에 정성을 들여 탄생한 기능이기 때문입니다.
+
+- 또한 로컬스토리지에 로그인 토큰을 저장한 후 해당 제품을 구매했을 시, 리뷰 등록 가능한 구조입니다.
 
 - 그리고 '리뷰 등록' 버튼을 누르면 선택한 별점, 입력한 댓글, 아이디명이 등록되는데 기존에 배열로 된 한 줄 댓글만 구현해 보아서 처음에 엄청 헤맸습니다. 어떻게 데이터를 만져야 할지 감이 잡히지 않았기 때문입니다. 결국은 당연하게도 key와 value를 담은 객체 데이터로 구현할 수 있었는데 이 고민을 통해 수많은 생각을 하면서 코딩에 감을 불어 넣어 준 코드이기에 매우 인상 깊습니다.
 
